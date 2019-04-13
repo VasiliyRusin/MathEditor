@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "tar": "^4.4.8",
+    "v-runtime-template": "^1.6.2",
     "vue": "^2.6.6",
     "vue-katex": "^0.2.0",
     "vue-router": "^3.0.1",

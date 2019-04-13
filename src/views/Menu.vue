@@ -1,14 +1,14 @@
 <template>
-  <div class="home">
+    <div>
     <FileLoader />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import FileLoader from "@/components/FileLoader.vue";
+    // @ is an alias to /src
+    import FileLoader from "@/components/FileLoader.vue";
 
-export default {
+    export default {
   name: "home",
   components: {
       FileLoader
