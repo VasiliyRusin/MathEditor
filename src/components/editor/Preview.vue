@@ -5,7 +5,8 @@
 </template>
 
 <script>
-    import Rendered from "@/components/preview/Rendered";
+    import SanitizeHtml from "sanitize-html";
+    import Rendered from "@/components/editor/preview/Rendered";
 
     export default {
         name: "Preview",
@@ -16,7 +17,9 @@
         computed: {
             selectedData: function () {
                 return this.$store.getters.selectedData.map((template) => {
-                    return `<p>${template}</p>`
+                    return `<p>${SanitizeHtml(template, {
+                        allowedTags: ['b', 'i', 'math'],
+                    })}</p>`
                 });
             }
         }

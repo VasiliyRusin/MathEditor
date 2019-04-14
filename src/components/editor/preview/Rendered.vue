@@ -4,7 +4,7 @@
 
 <script>
     import VRuntimeTemplate from "v-runtime-template";
-    import Math from "@/components/editor/Math";
+    import Math from "@/components/editor/preview/Math";
 
     export default {
         name: "Rendered",

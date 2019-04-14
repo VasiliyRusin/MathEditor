@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         selectedId: null,
-        data: '',
+        data: {},
     },
     mutations: {
         UPDATE_SELECTED_ID (state, value) {
@@ -36,7 +36,7 @@ export default new Vuex.Store({
     },
     actions: {
         addData ({state, commit}) {
-            let max_id = Math.max(...Object.keys(state.data).map((key) => {
+            let max_id = Math.max(-1, ...Object.keys(state.data).map((key) => {
                 return parseInt(key.replace('id', ''))
             }));
 

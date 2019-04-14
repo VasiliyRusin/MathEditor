@@ -27,7 +27,7 @@
                     let index = this.index;
                     this.$store.commit('UPDATE_SELECTED_DATA_MESSAGE', {index, value});
                 }
-            },
+            }
         },
 
         methods: {

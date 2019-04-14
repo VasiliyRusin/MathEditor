@@ -18,7 +18,7 @@
             </td>
             <td v-if="selectedId">
                 <div>
-                    <button @click.self="addMessage()"></button>
+                    <button @click.self="addMessage()" :disabled="is_maximum"></button>
                     <Message v-for="(_, index) in selectedData" :key="index" :index="index"></Message>
                 </div>
             </td>
@@ -33,8 +33,7 @@
 
 <script>
     // @ is an alias to /src
-    import {mapToObject} from "@/utils";
-    import Preview from "@/components/Preview";
+    import Preview from "@/components/editor/Preview";
     import Identificator from "@/components/editor/Identificator";
     import Message from "@/components/editor/Message";
 
@@ -44,91 +43,6 @@
             Preview,
             Message,
             Identificator
-        },
-
-        created: function () {
-            this.$store.commit('UPDATE_DATA', mapToObject(JSON.parse(`[
-                    ["id1", [
-                        "Test message <b>1</b>",
-                        "Test message <b>2</b>"
-                    ]],
-                    ["id2", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id3", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id4", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id5", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id6", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id7", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id8", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id9", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id10", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id11", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id12", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id13", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id14", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id15", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id16", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id17", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id18", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id19", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]],
-                    ["id20", [
-                        "Test message <i>1</i> with math <math>x</math>",
-                        "Test message <i>2</i> with math <math>x+y</math>"
-                    ]]
-                ]`)))
         },
 
         computed: {
@@ -147,6 +61,10 @@
             selectedData: function () {
                 return this.$store.getters.selectedData;
             },
+
+            is_maximum: function () {
+                return this.selectedData.length >= 10;
+            }
         },
 
         methods: {
